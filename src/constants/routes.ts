@@ -7,5 +7,6 @@ export const routes = {
     features: "features",
     promo: "promotion",
     footer: "footer",
+    architecture: "architecture"
   };
   export const appLinks = Object.values(routes).map((r) => r);

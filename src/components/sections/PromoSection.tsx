@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "../Button";
 
 export default function PromoSection() {
@@ -5,17 +6,16 @@ export default function PromoSection() {
         <section className="relative w-full min-h-[400px] row items-end justify-around gap-4">
             <img
                 className="object-scale-down max-w-[200px] sm:max-w-sm max-h-[inherit] overflow-hidden"
-                src="/assets/vr-person.webp"
+                src="/assets/rocket.png"
                 alt="vr_person"
             />
             <div className="bg-gradient-to-bl from-sky-700 via-purple-700 to-blue-800 rounded-3xl p-3 md:p-0 w-full sm:h-[320px] h-full absolute bottom-0 z-[-1] shadow-lg"></div>
             <article className="col gap-6 items-start justify-center h-[inherit] md:max-w-[40%] m-2 lg:-translate-y-10">
-                <h4 className="font-redzone text-6xl">Join Us now</h4>
+                <h4 className="font-redzone text-6xl">Start today</h4>
                 <span className="text-gray-200">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem illo
-                    eaque fugiat pariatur error!
+                Become part of the revolution. Sign up today to experience privacy-first KYC verification for your platform, powered by cutting-edge Zero Knowledge Proofs (ZKP). No data exposure, full compliance.
                 </span>
-                <Button outline>Join Tournament</Button>
+                <Link href={"/app-home"}><Button outline>Launch App</Button></Link>
             </article>
         </section>
     );

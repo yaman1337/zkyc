@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 
 import AboutSection from "@/components/sections/AboutSection";
-import CollectionSection from "@/components/sections/CollectionSection";
 import FAQSection from "@/components/sections/FAQSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import FooterSection from "@/components/sections/FooterSection";
@@ -14,14 +13,15 @@ import Animate from "@/components/Animate";
 import { theme, APP_BODY_ID } from "@/lib/utils";
 import React from "react";
 import { routes } from "@/constants";
+import Architecture from "@/components/sections/Architecture";
 
 const Components = [
   { El: Header, id: routes.home },
   { El: MainSection, id: routes.home },
   { El: Popularity, id: routes.popular },
+  {El: Architecture, id: routes.architecture },
   { El: AboutSection, id: routes.about },
   { El: FeaturesSection, id: routes.features },
-  { El: CollectionSection, id: routes.collection },
   { El: FAQSection, id: routes.faq },
   { El: PromoSection, id: routes.promo },
   { El: FooterSection, id: routes.footer },
