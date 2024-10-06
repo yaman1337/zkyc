@@ -1,4 +1,4 @@
-import { appLinks } from "@/app/page";
+import { appLinks } from "@/constants";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { FaGithub, FaBitcoin } from "react-icons/fa";
 import { RiDiscordFill } from "react-icons/ri";

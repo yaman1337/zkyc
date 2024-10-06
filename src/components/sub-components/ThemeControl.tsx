@@ -1,3 +1,4 @@
+"use client"
 import { theme } from "@/lib/utils";
 import { useState } from "react";
 import { BiMoon } from "react-icons/bi";

@@ -12,20 +12,8 @@ import Popularity from "@/components/sections/Popularity";
 import PromoSection from "@/components/sections/PromoSection";
 import Animate from "@/components/Animate";
 import { theme, APP_BODY_ID } from "@/lib/utils";
-import Link from "next/link";
 import React from "react";
-
-export const routes = {
-  home: "",
-  about: "about",
-  collection: "collections",
-  faq: "faq",
-  popular: "popular",
-  features: "features",
-  promo: "promotion",
-  footer: "footer",
-};
-export const appLinks = Object.values(routes).map((r) => r);
+import { routes } from "@/constants";
 
 const Components = [
   { El: Header, id: routes.home },
