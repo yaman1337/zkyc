@@ -3,9 +3,15 @@ import { Form, Input, Button, DatePicker, Select } from 'antd';
 import { UserOutlined, IdcardOutlined, HomeOutlined } from '@ant-design/icons';
 import type { FormInstance } from 'antd/es/form';
 
+
+interface KYCFormProps {
+  sendTransaction: () => {},
+  isLoading: boolean
+}
+
 const { Option } = Select;
 
-export const KYCForm: React.FC = () => {
+export const KYCForm: React.FC<KYCFormProps> = ({ sendTransaction, isLoading }) => {
   const formRef = React.createRef<FormInstance>();
 
   const onFinish = (values: any) => {
@@ -83,6 +89,8 @@ export const KYCForm: React.FC = () => {
 
           <Form.Item>
             <Button 
+              loading={isLoading}
+              onClick={sendTransaction}
               type="primary" 
               htmlType="submit" 
               className="w-full bg-gradient-to-r from-purple-500 to-blue-600 hover:from-blue-500 hover:to-purple-600 text-white font-semibold py-3 rounded-lg"
