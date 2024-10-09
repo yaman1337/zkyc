@@ -1,6 +1,6 @@
 "use client";
 import { KYCForm } from "@/components";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import { getLightProtocolRpcConnection } from "@/lib/connection-provider";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -10,12 +10,34 @@ import {
   LightSystemProgram,
 } from "@lightprotocol/stateless.js";
 import { ComputeBudgetProgram, Transaction } from "@solana/web3.js";
+import { RiLoaderLine } from "react-icons/ri";
+
+
+const { confirm } = Modal;
+
 const AppPage = () => {
   const { publicKey, signTransaction } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [transactionHash, setTransactionHash] = useState("");
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   async function start() {
     setIsLoading(true);
+    showModal()
+
     const connection = getLightProtocolRpcConnection();
 
     const balances = await connection.getCompressedTokenBalancesByOwner(
@@ -58,6 +80,7 @@ const AppPage = () => {
     await connection.confirmTransaction(txId);
 
     console.log("Transaction Signature:", txId);
+    setTransactionHash(txId);
 
     setIsLoading(false);
     console.log({
@@ -66,9 +89,18 @@ const AppPage = () => {
     });
   }
 
+
   return (
     <main className="overflow-y-scroll h-full w-full">
       <KYCForm isLoading={isLoading} sendTransaction={start} />
+      <Modal title={isLoading ? "Sending transaction" : "KYC submitted"} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+       { transactionHash && (
+        <div>
+          Transaction successfull. <br />
+          Transaction id: {transactionHash}
+        </div>
+       ) }
+      </Modal>
     </main>
   );
 };
